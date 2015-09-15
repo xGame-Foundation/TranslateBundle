@@ -1,0 +1,65 @@
+{% extends "@TerAdmin/Layout/page_with_box.html.twig" %}
+
+{% trans_default_domain "TerTranslateBundle" %}
+
+{% block page_title %}{{ 'title.wording_manage'|trans }}{% endblock %}
+
+{% block box_title %}{{ 'title.wording_list'|trans }}{% endblock %}
+
+{% block title %}{{ 'title.wording_list'|trans }}{% endblock %}
+
+{% block box_footer %}
+    <a href="{{ path('ter_back_wording_add_by_domain', { code: app.request.get('code')}) }}" class="btn btn-primary">
+        <i class="fa fa-plus"></i> {{ 'form.submit.wording_add'|trans }}
+    </a>
+{% endblock %}
+
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="{{ path('ter_back_index') }}"><i class="fa fa-book"></i> TER Admin</a></li>
+        <li><a href="{{ path('ter_back_domain_list') }}"> {{ 'title.domain_manage'|trans }}</a></li>
+        <li class="active">{{ 'title.wording_list'|trans }}</li>
+    </ol>
+{% endblock %}
+
+{% block box_content %}
+
+    {% include "@TerAdmin/Block/flashmessage.html.twig" %}
+
+    <table class="table table-striped">
+        <tbody>
+        <tr>
+            <th>{{ 'label.wording_code'|trans }}</th>
+            <th>{{ 'label.wording_domain_name'|trans }}</th>
+            <th>{{ 'label.wording_language'|trans }}</th>
+            <th></th>
+        </tr>
+
+        {% for wording in wordings %}
+            <tr>
+                <td>{{ wording.code }}</td>
+                <td>{{ wording.domain.name }}</td>
+                <td>
+
+                    {% for locale in locale.getLocales() %}
+                        {% if (wording.translate(locale, false) and wording.translate(locale).getValue() is not empty) %}
+                            <img class="flag-min" src="{{ asset('bundles/teradmin/img/flag/' ~ locale ~ '.png') }}" alt="{{ locale }}" title="{{ locale }}" />
+                        {% endif %}
+                    {% endfor %}
+
+                </td>
+                <td>
+                    <a href="{{ path('ter_back_wording_edit', { id: wording.id }) }}" class="btn btn-default">
+                        <i class="fa fa-pencil"></i> {{ 'template.edit'|trans({}, 'TerAdminBundle') }}
+                    </a>
+                    <a href="{{ path('ter_back_wording_delete', { id: wording.id }) }}" class="btn btn-danger">
+                        <i class="fa fa-trash"></i> {{ 'template.delete'|trans({}, 'TerAdminBundle') }}
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}

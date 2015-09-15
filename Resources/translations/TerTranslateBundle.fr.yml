@@ -1,0 +1,50 @@
+title:
+    lang_add: "Ajouter une nouvelle langue"
+    lang_edit: "Editer une langue"
+    lang_manage: "Gestions des langues"
+    lang_list: "Liste des langues"
+    domain_add: "Ajouter un domaine"
+    domain_list: "Liste des domaines"
+    domain_manage: "Gestion des domaines"
+    domain_edit: "Editer un domaine"
+    wording_add: "Ajouter une traduction"
+    wording_edit: "Editer une traduction"
+    wording_list: "Liste des traductions"
+    wording_manage: "Gestion des traductions"
+
+form:
+    lang_name: "Nom de la langue :"
+    lang_code: "Code de la langue (format ISO 639-1):"
+    lang_published: "Publier la langue ?"
+    domain_name: "Nom du domaine :"
+    domain_description: "Description du domaine :"
+    domain_code: "Code du domaine :"
+    submit:
+        lang_add: "Ajouter une nouvelle langue"
+        lang_edit: "Editer la langue"
+        wording_add: "Ajouter une traduction"
+        wording_edit: "Editer la traduction"
+        domain_add: "Ajouter un nouveau domaine de traduction"
+        domain_edit: "Editer un domaine de traduction"
+
+label:
+    lang_name: "Nom"
+    lang_code: "Code (ISO 639-1)"
+    lang_lock: "Verouillé ?"
+    lang_default: "Défaut ?"
+    lang_publish: "Publié ?"
+    domain_code: "Code"
+    domain_name: "Nom"
+    domain_description: "Description"
+    domain_count: "Quantité de traduction"
+    wording_code: "Code"
+    wording_domain_name: "Domaine"
+
+messages:
+    domain_count_value: "%quantity% traduction(s)"
+
+
+flashmessage:
+    add_language: "Langue créée avec succés"
+    lock_language: "La langue ne peut pas être modifiée, elle est soit la langue par défaut soit elle est verouillé."
+    published_language: "La langue est publiée, elle ne peut pas être supprimée."

@@ -1,0 +1,31 @@
+{% extends "@TerAdmin/Layout/page_with_box.html.twig" %}
+
+{% trans_default_domain "TerTranslateBundle" %}
+
+{% block page_title %}{{ 'title.lang_manage'|trans }}{% endblock %}
+
+{% block box_title %}{{ 'title.lang_add'|trans }}{% endblock %}
+
+{% block title %}{{ 'title.lang_add'|trans }}{% endblock %}
+
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="{{ path('ter_back_index') }}"><i class="fa fa-book"></i> TER Admin</a></li>
+        <li><a href="{{ path('ter_back_language_list') }}">{{ 'title.lang_manage'|trans }}</a></li>
+        <li class="active">{{ 'title.lang_add'|trans }}</li>
+    </ol>
+{% endblock %}
+
+{% block box_content %}
+    <form action="{{ path('ter_back_language_add') }}" {{ form_enctype(form) }} method="POST">
+
+        {{ form_widget(form) }}
+
+        <div class="form-group">
+            <button type="submit" id="ter_back_language_form_submit" name="ter_back_language_form[submit]" class="btn-primary btn">
+                {{ 'form.submit.lang_add'|trans }}
+            </button>
+        </div>
+
+    </form>
+{% endblock %}

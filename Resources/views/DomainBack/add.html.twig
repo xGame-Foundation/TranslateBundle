@@ -1,0 +1,30 @@
+{% extends "@TerAdmin/Layout/page_with_box.html.twig" %}
+
+{% trans_default_domain "TerTranslateBundle" %}
+
+{% block page_title %}{{ 'title.domain_manage'|trans }}{% endblock %}
+
+{% block box_title %}{{ 'title.domain_add'|trans }}{% endblock %}
+
+{% block title %}{{ 'title.domain_add'|trans }}{% endblock %}
+
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="{{ path('ter_back_index') }}"><i class="fa fa-book"></i> TER Admin</a></li>
+        <li class="active">{{ 'title.domain_add'|trans }}</li>
+    </ol>
+{% endblock %}
+
+{% block box_content %}
+    <form action="{{ path('ter_back_domain_add') }}" {{ form_enctype(form) }} method="POST">
+
+        {{ form_widget(form) }}
+
+        <div class="form-group">
+            <button type="submit" id="ter_back_domain_form_submit" name="ter_back_domain_form_submit[submit]" class="btn-primary btn">
+                {{ 'form.submit.domain_add'|trans }}
+            </button>
+        </div>
+
+    </form>
+{% endblock %}

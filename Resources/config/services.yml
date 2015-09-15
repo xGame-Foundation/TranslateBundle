@@ -1,0 +1,27 @@
+services:
+
+    ter_translate.locale_listener:
+        class: TranslateBundle\Services\LocaleListener
+        arguments: [ @service_container ]
+        tags:
+            - { name: kernel.event_subscriber }
+
+    ter_translate.translate:
+        class: TranslateBundle\Services\Translate
+        arguments: [ @service_container ]
+
+    twig.extension.translate:
+        class: TranslateBundle\TwigExtension\Translate
+        arguments: [@ter_translate.translate]
+        tags:
+            - { name: twig.extension }
+
+    ter.translation.cache:
+        class: TranslateBundle\Services\ClearCache
+        arguments: [ @service_container ]
+
+    ter.translation.loader:
+        class: TranslateBundle\Services\TranslationLoader
+        arguments: [ @doctrine.orm.entity_manager ]
+        tags:
+           - { name: translation.loader, alias: bin }

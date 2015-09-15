@@ -1,0 +1,34 @@
+{% extends "@TerAdmin/Layout/page_with_box.html.twig" %}
+
+{% trans_default_domain "TerTranslateBundle" %}
+
+{% block page_title %}{{ 'title.wording_manage'|trans }}{% endblock %}
+
+{% block box_title %}{{ 'title.wording_add'|trans }}{% endblock %}
+
+{% block title %}{{ 'title.wording_add'|trans }}{% endblock %}
+
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="{{ path('ter_back_index') }}"><i class="fa fa-book"></i> TER Admin</a></li>
+        {% if app.request.get('code') is not empty %}
+            <li><a href="{{ path('ter_back_domain_list') }}"> {{ 'title.domain_manage'|trans }}</a></li>
+            <li><a href="{{ path('ter_back_wording_by_domain', { code: app.request.get('code')}) }}">{{ 'title.wording_list'|trans }}</a></li>
+        {% endif %}
+        <li class="active">{{ 'title.wording_add'|trans }}</li>
+    </ol>
+{% endblock %}
+
+{% block box_content %}
+    <form action="" {{ form_enctype(form) }} method="POST">
+
+        {{ form_widget(form) }}
+
+        <div class="form-group">
+            <button type="submit" id="ter_back_wording_form_submit" name="ter_back_wording_form_submit[submit]" class="btn-primary btn">
+                {{ 'form.submit.wording_add'|trans }}
+            </button>
+        </div>
+
+    </form>
+{% endblock %}
